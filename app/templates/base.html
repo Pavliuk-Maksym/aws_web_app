@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Flask App{% endblock %}</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{{ url_for('s3.s3_index') }}">S3 Buckets</a>
+      </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <main>{% block content %} {% endblock %}</main>
+
+    <footer>
+      <p>Made With Flask & Boto3</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

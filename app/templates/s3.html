@@ -2,8 +2,8 @@
 {% block content %}
 <h1>S3 Buckets Management</h1>
 
-<!-- 1. Create folder in S3 -->
 <div class="s3_content">
+  <!-- 1. Create folder in S3 -->
   <section>
     <h3>Create Folder in S3 Bucket</h3>
     <form action="{{ url_for('s3.create_folder') }}" method="POST">
@@ -63,8 +63,6 @@
       <li>{{ obj }}</li>
       {% endfor %}
     </ul>
-    {% else %}
-    <p>No files found in this bucket.</p>
     {% endif %}
   </section>
 
@@ -110,6 +108,31 @@
       />
       <button type="submit">Download</button>
     </form>
+  </section>
+
+  <!-- 6. Display S3 Image -->
+  <section>
+    <h3>Display S3 Image</h3>
+    <form action="{{ url_for('s3.display_image') }}" method="GET">
+      <input
+        type="text"
+        name="bucket_name"
+        placeholder="Bucket name"
+        required
+      />
+
+      <input
+        type="text"
+        name="object_key"
+        placeholder="Object key (file path)"
+        required
+      />
+      <button type="submit">Display</button>
+    </form>
+
+    {% if img %}
+    <img src="{{ img }}" alt="S3 Image" />
+    {% endif %}
   </section>
 </div>
 

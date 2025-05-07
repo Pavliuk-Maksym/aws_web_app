@@ -6,7 +6,6 @@ from flask import (
     redirect,
     url_for,
     flash,
-    send_file,
 )
 from app.services import s3_service
 
@@ -78,3 +77,15 @@ def download_file():
     success, msg = s3_service.download_file(bucket, key, path)
     flash(msg, "success" if success else "error")
     return redirect(url_for("s3.s3_index"))
+
+
+# Display image
+@s3_bp.route("/display_image", methods=["GET"])
+def display_image():
+    bucket = request.args.get("bucket_name")
+    key = request.args.get("object_key")
+    success, img_url = s3_service.generate_image_url(bucket, key)
+    if not success:
+        flash(img_url, "error")
+        return redirect(url_for("s3.s3_index"))
+    return render_template("s3.html", img=img_url)

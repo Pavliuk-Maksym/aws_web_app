@@ -59,3 +59,16 @@ def download_file(
         return True, f"File '{object_key}' downloaded to {download_path}."
     except ClientError as e:
         return False, f"Failed to download file: {e}"
+
+
+def generate_image_url(bucket_name: str, object_key: str) -> tuple[bool, str]:
+    try:
+        s3_client = boto3.client("s3")
+        url = s3_client.generate_presigned_url(
+            "get_object",
+            Params={"Bucket": bucket_name, "Key": object_key},
+            ExpiresIn=300,
+        )
+        return True, url
+    except ClientError as e:
+        return False, f"Failed to generate image URL: {e}"

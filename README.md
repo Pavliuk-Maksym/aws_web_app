@@ -15,12 +15,13 @@ Web-application developed in this project allows user to interact with AWS techo
 - **List** all objects inside a bucket
 - **Upload** file to a (folder(s) in) backet
 - **Download** file from server
+- **Display** image from bucket
 
 ---
 
 ## ⚙ Requirements
 
-- Python 3.8+
+- Python 3.10+
 - Flask
 - Boto3
 - AWS account with access keys
@@ -77,7 +78,10 @@ Web-application developed in this project allows user to interact with AWS techo
    aws_secret_access_key = your_aws_secret_access_key
    ```
 
-   files at the `C:\Users\<username>\.aws` directory
+   files at the:
+
+   - `C:\Users\<username>\.aws` on Windows
+   - `~/.aws/credentials` on Linux
 
 6. Launch the application:
 

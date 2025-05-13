@@ -94,7 +94,7 @@ run.py
 
 5. Set up `config`
 
-   ```toml
+   ```bash
    [default]
    region = your_region
    output = output_format
@@ -102,7 +102,7 @@ run.py
 
    and `credentials`
 
-   ```toml
+   ```bash
    [default]
    aws_access_key_id = your_aws_access_key_id
    aws_secret_access_key = your_aws_secret_access_key

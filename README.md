@@ -88,7 +88,7 @@ run.py
 
 4. Create a `.env` file in the project's root folder and add your key:
 
-   ```toml
+   ```bash
    SECRET_KEY=your_secret_app_key
    ```
 

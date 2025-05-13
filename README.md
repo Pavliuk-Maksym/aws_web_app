@@ -19,6 +19,36 @@ Web-application developed in this project allows user to interact with AWS techo
 
 ---
 
+## 🌳 Project Structure
+
+```
+app/
+├── routes/
+│   ├── __init__.py
+│   ├── home.py
+│   └── s3.py
+├── services/
+│   ├── __init__.py
+│   └── s3_service.py
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+├── templates/
+│   ├── base.html
+│   ├── home.html
+│   └── s3.html
+├── __init__.py
+└── config.py
+.gitignore
+README.md
+requirements.txt
+run.py
+```
+
+---
+
 ## ⚙ Requirements
 
 - Python 3.10+
@@ -43,7 +73,7 @@ Web-application developed in this project allows user to interact with AWS techo
 2. Set up a virtual Environment
 
    ```bash
-   python3 -m venv venv
+   python -m venv venv
    ```
 
    ```bash
@@ -56,15 +86,15 @@ Web-application developed in this project allows user to interact with AWS techo
    pip install -r requirements.txt
    ```
 
-4. Create a `.env` file and add your key:
+4. Create a `.env` file in the project's root folder and add your key:
 
-   ```bash
+   ```toml
    SECRET_KEY=your_secret_app_key
    ```
 
 5. Set up `config`
 
-   ```bash
+   ```toml
    [default]
    region = your_region
    output = output_format
@@ -72,7 +102,7 @@ Web-application developed in this project allows user to interact with AWS techo
 
    and `credentials`
 
-   ```bash
+   ```toml
    [default]
    aws_access_key_id = your_aws_access_key_id
    aws_secret_access_key = your_aws_secret_access_key
@@ -81,7 +111,7 @@ Web-application developed in this project allows user to interact with AWS techo
    files at the:
 
    - `C:\Users\<username>\.aws` on Windows
-   - `~/.aws/credentials` on Linux
+   - `~/.aws` on Linux
 
 6. Launch the application:
 
